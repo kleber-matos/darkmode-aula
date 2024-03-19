@@ -1,4 +1,6 @@
 /** @format */
+//link complementar sobre o ternario: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_operator
+
 //* O que é useeffect?
 // O useEffect é um dos hooks fornecidos pelo React que
 // atua no ciclo de vida da sua página, nos ajudando a
@@ -15,6 +17,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function App() {
+  //Explicação de como useEffect funciona
   const [count, setCount] = useState(0);
 
   //useEffect com o seu array de dependecia ele observa apenas o count
@@ -22,10 +25,13 @@ export default function App() {
     console.log("bom dia");
   }, [count]);
 
+  //Criando um dark mode
+
   // Mudança de estados do dark mode
   const [mode, setMode] = useState("White");
   const [open, setOpen] = useState(false);
 
+  //Dark ou White ?
   function dark() {
     setMode("Dark");
   }
@@ -44,6 +50,7 @@ export default function App() {
       document.body.style.color = "white";
     }
   }, [mode]);
+  //observe mode
 
   return (
     <div>
@@ -60,6 +67,7 @@ export default function App() {
           } else {
             white();
           }
+          // Operador ternario
           // open === true ? trocaComida1() : trocaComida2();
           setOpen(!open);
         }}>
