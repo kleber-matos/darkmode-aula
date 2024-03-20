@@ -25,13 +25,24 @@ export default function App() {
     console.log("bom dia");
   }, [count]);
 
-  //Criando um dark mode
+  //useEffect observando Count e mudando as cores da body
+  useEffect(() => {
+    if (count === 1) {
+      document.body.style.backgroundColor = "red";
+    }
+    if (count === 2) {
+      document.body.style.backgroundColor = "green";
+    }
+    if (count === 3) {
+      document.body.style.backgroundColor = "pink";
+    }
+  }, [count]);
 
+  //Criando um dark mode
   // Mudança de estados do dark mode
   const [mode, setMode] = useState("White");
-  const [open, setOpen] = useState(false);
 
-  //Dark ou White ?
+  //Dark ou White
   function dark() {
     setMode("Dark");
   }
@@ -62,14 +73,13 @@ export default function App() {
       <h2>{mode}</h2>
       <button
         onClick={() => {
-          if (open) {
-            dark();
-          } else {
+          if (mode == "Dark") {
             white();
+          } else {
+            dark();
           }
           // Operador ternario
-          // open === true ? trocaComida1() : trocaComida2();
-          setOpen(!open);
+          // mode === "Dark" ? white() : dark();
         }}>
         mode
       </button>
